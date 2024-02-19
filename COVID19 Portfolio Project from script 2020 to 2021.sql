@@ -76,7 +76,7 @@ where continent is not null
 order by 1,2
 
 ---Using Joins i am going to connect tables covid deaths and covid vaccinations show the percentage of the global population vaccinated
----i will be adding up total number of vaccinations by date and location and then using the partition by function to split vaccinations by location 
+---i will be adding up total number of vaccinations by date and location and then using the partition by clause to split vaccinations by location 
 select covdeaths.continent, covdeaths.location, covdeaths.date, covdeaths.population, covvac.new_vaccinations
 , SUM(CONVERT(int,covvac.new_vaccinations)) OVER(partition by covdeaths.location order by covdeaths.location, covdeaths.date) as newvacadd
 from PortfolioProject..CovidDeaths covdeaths
